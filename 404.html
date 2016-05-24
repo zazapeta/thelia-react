@@ -1,0 +1,17 @@
+{extends file="layout.tpl"}
+
+{* Body Class *}
+{block name="body-class"}page-404{/block}
+
+{* Breadcrumb *}
+{block name='no-return-functions' append}
+    {$breadcrumbs = [
+    ['title' => {intl l="404"}, 'url'=>{url path="/404"}]
+    ]}
+{/block}
+
+{block name="before-react"}
+    <script>
+    window.path = '404';
+    </script>
+{/block}

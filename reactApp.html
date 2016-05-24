@@ -1,0 +1,32 @@
+{extends file="layout.tpl"}
+
+{* Body Class *}
+{block name="body-class"}react-app{/block}
+
+{* Breadcrumb *}
+{block name='no-return-functions' append}
+    {$breadcrumbs = [
+        ['title' => {intl l="ReactApp"}, 'url'=>{url path="/reactApp"}]
+    ]}
+{/block}
+
+
+
+
+{block name="react"}
+	<div id='reactApp'></div>
+	<script>
+	window.smarty = {};
+	window.smarty.categories = {
+		{loop name="category_list" type="category" visible="*" parent=$category_id order=$category_order backend_context="1" lang=$lang_id return_url=false}
+			{$ID} : {			
+					{loop type="image" name="cat_image" source="category" source_id="$ID"}
+		               src:"{$IMAGE_URL nofilter}",
+		               title:"{$TITLE}"
+		             {/loop}
+	              },                            
+		{/loop}
+	}
+	</script>
+	<script src="{javascript file='assets/dist/js/reactApp.min.js'}"></script>
+{/block}
